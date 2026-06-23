@@ -30,7 +30,7 @@ export const useUsers = () =>
     queryKey: ['dvm-users'],
     queryFn: async () => {
       const { data } = await axios.get<UserOption[]>(`${API_BASE}/filters/users`);
-      return data;
+      return Array.isArray(data) ? data : [];
     },
     staleTime: 5 * 60 * 1000
   });
